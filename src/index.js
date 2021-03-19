@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App.js';
+import App from './App.jsx';
 
 // simple addition of root element so that we don't need an index.html template
 const body = document.getElementsByTagName('BODY')[0];
