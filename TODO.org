@@ -1,7 +1,7 @@
 * Counter CRUD MVP
 ** Creating Counters
 *** DONE Configure the redux store
-*** TODO Create a component that will house the form  
+*** DONE Create a component that will house the form  
     The form needs to specify the counter needs a "Label", a number in minutes that the timer will run for, the color (see below), and the icons.
     {
       label: string,
@@ -10,7 +10,7 @@
       icon: ?
     }
     colors and icons can wait.
-*** TODO Make a rudimentary form that will create a counter in the store
+*** DONE Make a rudimentary form that will create a counter in the store
 * UI Cloning (further out in time)
 ** TODO get a screenshot of the old app and get the exact color choices
 ** TODO find out where the icons are from, or just steal them and vectorize them
