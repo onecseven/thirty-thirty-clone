@@ -12,7 +12,7 @@
     colors and icons can wait.
 *** DONE Make a rudimentary form that will create a counter in the store
 ** Deleting Counters
-*** TODO Make a list view component that displays the Counters.
+*** DONE Make a list view component that displays the Counters.
 **** TODO Give it a delete button on the side of the counter displays
 ** Updating Counters
 *** TODO figure out the TODOs for this list
