@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
-import {add} from "../counterSlice"
+import {add} from "./counterSlice"
 
 export const AddCounter = () => {
   const [label, setLabel] = useState("")

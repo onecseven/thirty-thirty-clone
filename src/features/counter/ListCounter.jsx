@@ -1,17 +1,13 @@
 import React from "react"
 import { useSelector } from "react-redux"
+import { Counter } from "./Counter"
 
 export const ListCounter = () => {
   const list = useSelector((state) => state.counter.list)
-  console.log(list)
   return (
     <div className="list">
-      {list.map(({ label, minutes }) => {
-        return (
-          <div className="counter">
-            <p>Label: "{label}" | Duration: {minutes} minutes</p>
-          </div>
-        )
+      {list.map((counter, index) => {
+        return <Counter id={index} />
       })}
     </div>
   )

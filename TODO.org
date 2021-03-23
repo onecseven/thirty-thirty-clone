@@ -15,7 +15,7 @@
 *** DONE Make a list view component that displays the Counters.
 **** TODO Give it a delete button on the side of the counter displays
 ** Updating Counters
-*** TODO figure out the TODOs for this list
+*** TODO Make a Counter component
 ** Updating Counters
 * UI Cloning (further out in time)
 ** TODO get a screenshot of the old app and get the exact color choices
