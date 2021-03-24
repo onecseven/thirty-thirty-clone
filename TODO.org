@@ -18,7 +18,8 @@
 *** DONE Make a Counter component
 *** DONE Make an Update component
 *** DONE Make update action and function
-*** TODO I should try to have the counter component itself be an Editable Component that on change sends a dispatch out to update the store?
+*** DONE I should try to have the counter component itself be an Editable Component
+*** TODO that on change sends a dispatch out to update the store?s
 * UI Cloning (further out in time)
 ** TODO get a screenshot of the old app and get the exact color choices
 ** TODO find out where the icons are from, or just steal them and vectorize them
