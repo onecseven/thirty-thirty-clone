@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { useSelector,  } from "react-redux"
 import {DeleteCounter} from "./DeleteCounter"
+import { EditableComponent } from "./EditableComponent"
 import { UpdateCounter } from "./UpdateCounter"
 
 export const Counter = ({id}) => {
@@ -9,8 +10,10 @@ export const Counter = ({id}) => {
   return (
     <div>
       <div className="counter" key={id}>
+        <EditableComponent defaultText={counter.label}/>
         <p>
-          Label: "{counter.label}" | Duration: {counter.minutes} minutes
+          {/* Label: "{counter.label}" | Duration: {counter.minutes} minutes */}
+          Duration: {counter.minutes}
         </p>
         <DeleteCounter id={id}/>
         <button onClick={() => setUpdate(!update)}>
