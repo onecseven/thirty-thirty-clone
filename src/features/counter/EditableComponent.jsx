@@ -1,16 +1,24 @@
 import React, { useState } from "react"
+import { update } from "./counterSlice"
 
-
-export const EditableComponent = ({defaultText}) => {
+export const EditableComponent = ({ defaultText, afterChange, type}) => {
   const [isEditing, setisEditing] = useState(false)
   const [text, setText] = useState(defaultText || "")
   const ENTER_KEY_CODE = 13
-  const DEFAULT_LABEL_PLACEHOLDER = "Click To Edit"
+  const DEFAULT_LABEL_PLACEHOLDER = type === "string" ? "Click To Edit" : 0
   const isTextValueValid = () => {
     return typeof text != "undefined" && text.trim().length > 0
   }
 
+  const afterChangeCallback = () => {
+    if (typeof afterChange !== "function") return null
+    if (isEditing) {
+        afterChange(text)
+    }
+  }
+
   const handleFocus = () => {
+    afterChangeCallback()
     if (isTextValueValid()) {
       setisEditing(!isEditing)
     } else {
@@ -21,17 +29,17 @@ export const EditableComponent = ({defaultText}) => {
       }
     }
   }
-  const  handleKeyDown = (e) => {
+  const handleKeyDown = (e) => {
     if (e.keyCode === ENTER_KEY_CODE) {
       handleFocus()
     }
   }
-  
+
   if (isEditing) {
     return (
       <div>
         <input
-          type="text"
+          type={type || "text"}
           value={text}
           onChange={(e) => setText(e.target.value)}
           onBlur={handleFocus}
@@ -43,7 +51,7 @@ export const EditableComponent = ({defaultText}) => {
   }
 
   const labelText = isTextValueValid() ? text : DEFAULT_LABEL_PLACEHOLDER
-  
+
   return (
     <div>
       <label onClick={handleFocus}>{labelText}</label>

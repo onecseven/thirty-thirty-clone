@@ -1,25 +1,37 @@
-import React, {useState} from "react"
-import { useSelector,  } from "react-redux"
-import {DeleteCounter} from "./DeleteCounter"
+import React from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { DeleteCounter } from "./DeleteCounter"
 import { EditableComponent } from "./EditableComponent"
-import { UpdateCounter } from "./UpdateCounter"
+import { update } from "./counterSlice"
 
-export const Counter = ({id}) => {
+export const Counter = ({ id }) => {
+  const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter.list[id])
-  let [update, setUpdate] = useState(false)
   return (
     <div>
       <div className="counter" key={id}>
-        <EditableComponent defaultText={counter.label}/>
-        <p>
-          {/* Label: "{counter.label}" | Duration: {counter.minutes} minutes */}
-          Duration: {counter.minutes}
-        </p>
-        <DeleteCounter id={id}/>
-        <button onClick={() => setUpdate(!update)}>
-          {update ? "+" : "-"}
-        </button>
-        <UpdateCounter counterId={id} />
+        <label>
+          Label:
+          <EditableComponent
+            type={"text"}
+            defaultText={counter.label}
+            afterChange={(changes) =>
+              dispatch(update({ label: changes, minutes: counter.minutes, id }))
+            }
+          />
+        </label>
+
+        <label>
+          Minutes:
+          <EditableComponent
+            type={"number"}
+            defaultText={counter.minutes}
+            afterChange={(changes) =>
+              dispatch(update({ label: counter.label, minutes: changes, id }))
+            }
+          />
+        </label>
+        <DeleteCounter id={id} />
       </div>
     </div>
   )
