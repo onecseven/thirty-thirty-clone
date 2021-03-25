@@ -5,6 +5,7 @@ import { Provider } from "react-redux"
 import  store  from "./store"
 import {AddCounter} from "./features/counter/AddCounter"
 import { ListCounter } from "./features/counter/ListCounter"
+import Timer from "./features/counter/Timer"
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
       <div className="App">
         <Provider store={store}>
           <h1> Hello, World!!! </h1>
+          <Timer/>
           <AddCounter>
             </AddCounter>
             <ListCounter></ListCounter>

@@ -27,7 +27,7 @@ export const Counter = ({ id }) => {
             type={"number"}
             defaultText={counter.minutes}
             afterChange={(changes) =>
-              dispatch(update({ label: counter.label, minutes: changes, id }))
+              dispatch(update({ label: counter.label, minutes: Number(changes), id }))
             }
           />
         </label>

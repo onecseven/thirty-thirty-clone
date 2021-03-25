@@ -17,22 +17,36 @@ export const counterSlice = createSlice({
   reducers: {
     add: (state, action) => {
       let {label, minutes} = action.payload
-      let timeLeft = minutes
-      let timer = {label, minutes, timeLeft}
+      let timeLeft = minutes * 60
+      let timer = {label, minutes: Number(minutes), timeLeft}
       state.list.push(timer)
+      return state
     },
     remove: (state, action) => {
       let { id } = action.payload
       state.list = state.list.filter((v, i) => {
         return i != id
       })
+      return state
     },
     update: (state, action) => {
       let { label, minutes, id } = action.payload
       let newList = state.list.slice()
       newList[id] = { label, minutes, timeLeft: newList[id].timeLeft}
       state.list = newList
+      return state
     },
+    tick: (state, action) => {
+      let newState = state
+      let currentTimer = newState.list[0]
+      let oldTimer = state.list[0]
+      currentTimer.timeLeft = oldTimer.timeLeft - 1
+      if (currentTimer.timeLeft == 0) {
+        currentTimer.timeLeft = currentTimer.minutes * 60
+        state.list.push(state.list.shift()) //sends the top of the array to the back
+      } 
+      return state
+    }
   },
 })
 
@@ -40,5 +54,6 @@ export const counterSlice = createSlice({
 export const { remove } = counterSlice.actions
 export const { add } = counterSlice.actions
 export const { update } = counterSlice.actions
+export const { tick } = counterSlice.actions
 
 export default counterSlice.reducer

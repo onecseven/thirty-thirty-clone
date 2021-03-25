@@ -3,7 +3,7 @@ import { update } from "./counterSlice"
 
 export const EditableComponent = ({ defaultText, afterChange, type}) => {
   const [isEditing, setisEditing] = useState(false)
-  const [text, setText] = useState(defaultText || "")
+  const [text, setText] = useState( defaultText.toString() || "")
   const ENTER_KEY_CODE = 13
   const DEFAULT_LABEL_PLACEHOLDER = type === "string" ? "Click To Edit" : 0
   const isTextValueValid = () => {

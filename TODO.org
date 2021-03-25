@@ -14,7 +14,7 @@
 ** Deleting Counters
 *** DONE Make a list view component that displays the Counters.
 **** DONE Give it a delete button on the side of the counter displays
-*** TODO Make a Timer components that ticks down the current timer every second.
+*** DONE Make a Timerscomponents that ticks down the current timer every second.
 ** Updating Counters
 *** DONE Make a Counter component
 *** DONE Make an Update component

@@ -1,38 +1,33 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { tick } from "./counterSlice"
+
 const Timer = () => {
-  const { initialMinute = 0, initialSeconds = 0 } = props
-  const [minutes, setMinutes] = useState(initialMinute)
-  const [seconds, setSeconds] = useState(initialSeconds)
+  const [playing, togglePlaying] = useState(false)
+  const currentTimer = useSelector((state) => state.counter.list[0]) || null
+  const dispatch = useDispatch()
   useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1)
-      }
-      if (seconds === 0) {
-        if (minutes === 0) {
-          clearInterval(myInterval)
-        } else {
-          setMinutes(minutes - 1)
-          setSeconds(59)
-        }
+    let tickInterval = setInterval(() => {
+      if (playing) {
+        dispatch(tick())
       }
     }, 1000)
     return () => {
-      clearInterval(myInterval)
+      clearInterval(tickInterval)
     }
-  })
+  },[playing])
+  if (!currentTimer) return null
+  let {timeLeft} = currentTimer
 
   return (
     <div>
-      <button></button>
-      {minutes === 0 && seconds === 0 ? null : (
-        <h1>
-          {" "}
-          {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-        </h1>
-      )}
+      <button onClick={() => togglePlaying(!playing)}>
+        {playing ? "||" : "▶"}
+      </button>
+      <h1>
+        {Math.floor(timeLeft / 60)}:{Math.floor(timeLeft%60)}
+      </h1>
     </div>
   )
 }
