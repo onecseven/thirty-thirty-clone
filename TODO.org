@@ -14,12 +14,13 @@
 ** Deleting Counters
 *** DONE Make a list view component that displays the Counters.
 **** DONE Give it a delete button on the side of the counter displays
+*** TODO Make a Timer components that ticks down the current timer every second.
 ** Updating Counters
 *** DONE Make a Counter component
 *** DONE Make an Update component
 *** DONE Make update action and function
 *** DONE I should try to have the counter component itself be an Editable Component
-*** TODO that on change sends a dispatch out to update the store?s
+*** DONE that on change sends a dispatch out to update the store?s
 * UI Cloning (further out in time)
 ** TODO get a screenshot of the old app and get the exact color choices
 ** TODO find out where the icons are from, or just steal them and vectorize them

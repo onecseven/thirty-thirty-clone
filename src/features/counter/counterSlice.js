@@ -11,11 +11,15 @@ NOTICE: Until we move from MVP status, counters are to follow this pattern:
 export const counterSlice = createSlice({
   name: "counters",
   initialState: {
-    list: [],
+    list: [], // Timer[]
+    // Timer {label, minutes, timeLeft}s
   },
   reducers: {
     add: (state, action) => {
-      state.list.push(action.payload)
+      let {label, minutes} = action.payload
+      let timeLeft = minutes
+      let timer = {label, minutes, timeLeft}
+      state.list.push(timer)
     },
     remove: (state, action) => {
       let { id } = action.payload
@@ -26,7 +30,7 @@ export const counterSlice = createSlice({
     update: (state, action) => {
       let { label, minutes, id } = action.payload
       let newList = state.list.slice()
-      newList[id] = { label, minutes }
+      newList[id] = { label, minutes, timeLeft: newList[id].timeLeft}
       state.list = newList
     },
   },
