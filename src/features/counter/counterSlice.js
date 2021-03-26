@@ -4,8 +4,8 @@ import { createSlice } from "@reduxjs/toolkit"
 NOTICE: Until we move from MVP status, counters are to follow this pattern:
 {
   label: string,
-  minutes: number
-}
+  minutes: number,
+  timeLeft: number (minutes * 60)
 */
 
 export const counterSlice = createSlice({
@@ -37,11 +37,9 @@ export const counterSlice = createSlice({
       return state
     },
     tick: (state, action) => {
-      let newState = state
-      let currentTimer = newState.list[0]
-      let oldTimer = state.list[0]
-      currentTimer.timeLeft = oldTimer.timeLeft - 1
-      if (currentTimer.timeLeft == 0) {
+      let currentTimer = state.list[0]
+      currentTimer.timeLeft--
+      if (currentTimer.timeLeft <= 0) {
         currentTimer.timeLeft = currentTimer.minutes * 60
         state.list.push(state.list.shift()) //sends the top of the array to the back
       } 

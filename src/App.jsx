@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-          <h1> Hello, World!!! </h1>
+          <h1> Tati's 30/30 </h1>
           <Timer/>
           <AddCounter>
             </AddCounter>
