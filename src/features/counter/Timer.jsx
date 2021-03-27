@@ -17,16 +17,19 @@ const Timer = () => {
       clearInterval(tickInterval)
     }
   },[playing])
+
   if (!currentTimer) return null
   let {timeLeft} = currentTimer
-
+  let minutesLeft = Math.floor(timeLeft/60)
+  let secondsLeft = Math.floor(timeLeft%60) //cool huh?
+  
   return (
     <div>
       <button onClick={() => togglePlaying(!playing)}>
         {playing ? "||" : "▶"}
       </button>
       <h1>
-        {Math.floor(timeLeft / 60)}:{Math.floor(timeLeft%60)}
+        {minutesLeft}:{secondsLeft}
       </h1>
     </div>
   )

@@ -21,7 +21,11 @@
 *** DONE Make update action and function
 *** DONE I should try to have the counter component itself be an Editable Component
 *** DONE that on change sends a dispatch out to update the store?s
+** TODO Create a "send to the end of the queue" action
+** TODO Create a "send to the top of the queue" action
+** TODO Create a 'duplicate' action
 * UI Cloning (further out in time)
+** TODO Reasearch how to make a circle that fills up?
 ** TODO get a screenshot of the old app and get the exact color choices
 ** TODO find out where the icons are from, or just steal them and vectorize them
 ** TODO get screenshots of all the hues in the background to recreate the color scheme
